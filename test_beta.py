@@ -13,7 +13,7 @@ class TestBeta(unittest.TestCase):
 
     def test_verificacionDatos(self):
 
-        self.assertEqual(seguros.verificacionDatos(56,"f",800), "SI")
+        self.assertEqual(seguros.verificacionDatos(50,"f",800,True), "SI")
         with self.assertRaises(SystemExit) as cm:
             seguros.verificacionDatos(56,"l","m")
 
