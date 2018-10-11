@@ -59,16 +59,15 @@ def main():
         edad = calculoEdad(input("Imgrese fecha de nacimiento (XX/XX/XXXX): "))
         sexo = input("Ingrese su sexo: ")
         semCoti = input("Ingrese el numero de semanas cotizadas: ")
-        descontEdad = input("Ha trabajado usted en medios insalubres o capaces de producir vejez prematura?")
+        descontEdad = input("Ha trabajado usted en medios insalubres o capaces de producir vejez prematura? ")
         if descontEdad.lower() not in ["si","no"]:
             print("Error, la respuesta debe ser si o no")
             exit(1)
         if(descontEdad.lower() == "si"):
             numAnos = input("Indique el numero de anos que trabajo: ")
-            print(verificacionDatos(edad,sexo,weeksC,int(numAnos) // 4))
-            return
-           
-        print(verificacionDatos(edad,sexo,weeksC,0))
+            print(verificacionDatos(edad,sexo,semCoti,int(numAnos) // 4))
+        else:
+            print(verificacionDatos(edad,sexo,semCoti,0))
     elif(opcion == "2"):
         nombre = input("Ingrese nombre del archivo: ")
         file = open(nombre, "r")
@@ -77,8 +76,8 @@ def main():
             edad = calculoEdad(datos[0])
             if(len(datos) == 5 and datos[3].lower() == "si"):
                 print(verificacionDatos(edad,datos[1],datos[2], (int(datos[4])//4)))
-                return
-            print(verificacionDatos(edad,datos[1],datos[2], 0))
+            else:
+                print(verificacionDatos(edad,datos[1],datos[2], 0))
     else:
         print("Error, debe ingresar 1 o 2")
        
