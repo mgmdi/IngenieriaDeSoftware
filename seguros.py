@@ -10,6 +10,10 @@ def verificacionDatos(age,sex,weeksC):
                     "No" en caso contrario
     """
 
+    if (not(str(age).isdigit()) or sex.lower() not in ["m","f","femenino","masculino"] or 
+    not(str(weeksC).isdigit())):
+        print("Error, existe alguna discrepancia entre la edad, el sexo o las semanas")
+        exit(1) 
     if(sex.lower() == "m" and int(age) >= 60 and int(weeksC)>=750):
         return("SI")
     elif(sex.lower() == "f" and int(age) >= 55 and int(weeksC)>=750):
@@ -24,8 +28,12 @@ def calculoEdad(fecha):
     Parametros: string fecha en el formato XX/XX/XXXX
     Valor de retorno: int edad actual
     """
-
+    
     fecha = fecha.split('/')
+    if (len(fecha) != 3 or not(fecha[0].isdigit()) or not(fecha[1].isdigit()) or not(fecha[2].isdigit())):
+        print("Existe alguna discrepancia en la fecha")
+        exit(1)
+
     now = datetime.datetime.now()
     edad = int(now.year) - int(fecha[2])
 
