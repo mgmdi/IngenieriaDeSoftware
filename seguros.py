@@ -10,6 +10,12 @@ def verificacionDatos(age,sex,weeksC):
                     "No" en caso contrario
     """
 
+    if(sex.lower() == "m" and int(age) >= 60 and int(weeksC)>=750):
+        return("SI")
+    elif(sex.lower() == "f" and int(age) >= 55 and int(weeksC)>=750):
+        return("SI")
+    else:
+        return("NO")
 
 def calculoEdad(fecha):
     """
@@ -19,6 +25,11 @@ def calculoEdad(fecha):
     Valor de retorno: int edad actual
     """
 
+    fecha = fecha.split('/')
+    now = datetime.datetime.now()
+    edad = int(now.year) - int(fecha[2])
+
+    return edad
 
 def main():
     """
