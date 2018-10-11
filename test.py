@@ -62,6 +62,38 @@ class TestSeguro(unittest.TestCase):
         self.assertEqual(seguros.verificacionDatos(55,"m",750,True), "NO")
 
 
+    def test_verificacionDatosM(self):
+        '''
+        Funcion para verificacion de datos con casos de Malicia 
+        Los casos de malicia se definen como aquellos en donde los datos ingresados son invalidos y/o 
+        arrojan excepciones/errores.
+        Se considera caso invalido cuando el dato ingresado para indicar el sexo de la persona difiere de f/m.
+        Asimismo se considera caso invalido (ERROR) cuando el numero de horas cotizadas ingresadas difiere de un digito (positivo).
+        '''  
+        #CASO 1 
+        with self.assertRaises(SystemExit) as cm:
+            seguros.verificacionDatos(56,"m","a5",1)
+        self.assertEqual(cm.exception.code, 1) 
+
+        #CASO 2
+        with self.assertRaises(SystemExit) as cm:
+            seguros.verificacionDatos(56,"m",[0],1)
+        self.assertEqual(cm.exception.code, 1)  
+
+        #CASO 2
+        with self.assertRaises(SystemExit) as cm:
+            seguros.verificacionDatos(56,"Q",800,1)
+        self.assertEqual(cm.exception.code, 1) 
+
+        #CASO 3
+        with self.assertRaises(SystemExit) as cm:
+            seguros.verificacionDatos("Ochenta","m",750,1)
+        self.assertEqual(cm.exception.code, 1) 
+
+        #CASO 4
+        with self.assertRaises(SystemExit) as cm:
+            seguros.verificacionDatos(-56,"m",700,7)
+        self.assertEqual(cm.exception.code, 1)
 
 if __name__ == '__main__':
     unittest.main()  
