@@ -1,4 +1,5 @@
 import datetime
+import sys 
 
 def verificacionDatos(age,sex,weeksC,indicador):
     """
@@ -81,7 +82,7 @@ def main():
                 print(verificacionDatos(edad,datos[1],datos[2], 0))
     else:
         print("Error, debe ingresar 1 o 2")
-       
+        
 
 
 if __name__ == '__main__':
