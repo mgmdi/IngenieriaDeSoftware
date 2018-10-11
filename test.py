@@ -95,5 +95,33 @@ class TestSeguro(unittest.TestCase):
             seguros.verificacionDatos(-56,"m",700,7)
         self.assertEqual(cm.exception.code, 1)
 
+    def test_calculoEdadM(self):
+        '''
+        Funcion para verificacion del calculo de la edad con casos de malicia.
+        Los casos de malicia se definen como aquellos en donde los datos ingresados son invalidos y/o 
+        arrojan excepciones.
+        Se considera un caso invalido el formato para ingresar fecha de nacimiento como dd-mm-aaaa
+        '''     
+        #CASO 1
+        with self.assertRaises(SystemExit) as cm:
+            seguros.calculoEdad("21-06-1997")
+        self.assertEqual(cm.exception.code, 1) 
+
+        #CASO 2
+        with self.assertRaises(SystemExit) as cm:
+            seguros.calculoEdad("2106/1987")
+        self.assertEqual(cm.exception.code, 1)
+
+        #CASO 3
+        with self.assertRaises(SystemExit) as cm:
+            seguros.calculoEdad("5 de mayo de 1970")
+        self.assertEqual(cm.exception.code, 1)
+
+        #CASO 4 
+        with self.assertRaises(SystemExit) as cm:
+            seguros.calculoEdad("05101877")
+        self.assertEqual(cm.exception.code, 1)
+
+
 if __name__ == '__main__':
     unittest.main()  
