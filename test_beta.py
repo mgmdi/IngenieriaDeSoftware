@@ -15,7 +15,7 @@ class TestBeta(unittest.TestCase):
 
         self.assertEqual(seguros.verificacionDatos(50,"f",800,True), "SI")
         with self.assertRaises(SystemExit) as cm:
-            seguros.verificacionDatos(56,"l","m")
+            seguros.verificacionDatos(56,"l","m",True)
 
         self.assertEqual(cm.exception.code, 1)
 
