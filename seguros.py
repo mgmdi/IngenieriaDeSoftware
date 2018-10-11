@@ -66,7 +66,10 @@ def main():
             exit(1)
         if(descontEdad.lower() == "si"):
             numAnos = input("Indique el numero de anos que trabajo: ")
-            print(verificacionDatos(edad,sexo,semCoti,int(numAnos) // 4))
+            anosDestontados = int(numAnos) // 4
+            if (anosDestontados > 5):
+                anosDestontados = 5
+            print(verificacionDatos(edad,sexo,semCoti,anosDestontados))
         else:
             print(verificacionDatos(edad,sexo,semCoti,0))
     elif(opcion == "2"):
@@ -76,7 +79,10 @@ def main():
             datos = line.split()
             edad = calculoEdad(datos[0])
             if(len(datos) == 5 and datos[3].lower() == "si"):
-                print(verificacionDatos(edad,datos[1],datos[2], (int(datos[4])//4)))
+                anosDestontados = int(numAnos) // 4
+                if (anosDestontados > 5):
+                    anosDestontados = 5
+                print(verificacionDatos(edad,datos[1],datos[2], anosDestontados))
             else:
                 print(verificacionDatos(edad,datos[1],datos[2], 0))
     else:
