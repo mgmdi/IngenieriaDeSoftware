@@ -44,6 +44,23 @@ class TestSeguro(unittest.TestCase):
         self.assertEqual(seguros.verificacionDatos(66,"m",800,False), "SI")
 
 
+    def test_verificacionDatosF(self):
+        """
+        Funcion con casos frontera.
+        Los casos frontera se definen como la minima edad y minimo numero de cotizaciones
+        que se debe tener para optar por el seguro.
+        Se considera la minima edad como 55 para hombres (con 5 anos maximos de disminucion por trabajo
+        en medios insalubres) y 50 para las mujeres por la misma razon. 
+        """
+        #CASO 1
+        self.assertEqual(seguros.verificacionDatos(55,"f",750,True), "SI")
+        #CASO 2
+        self.assertEqual(seguros.verificacionDatos(50,"f",750,True), "NO")
+        #CASO 3
+        self.assertEqual(seguros.verificacionDatos(60,"m",750,True), "SI")
+        #CASO 4
+        self.assertEqual(seguros.verificacionDatos(55,"m",750,True), "NO")
+
 
 
 if __name__ == '__main__':
