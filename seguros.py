@@ -1,3 +1,10 @@
+''' 
+Created on 9 oct. 2018
+
+@author: Mariagabriela Jaimes
+         Maria Grimaldi 
+'''
+
 import datetime
 import sys 
 
