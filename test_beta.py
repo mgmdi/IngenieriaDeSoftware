@@ -5,7 +5,7 @@ class TestBeta(unittest.TestCase):
 
     def test_calculoEdad(self):
      
-        self.assertEqual(seguros.calculoEdad("16/12/1998"), 20)
+        self.assertEqual(seguros.calculoEdad("16/12/1998"), 19)
         with self.assertRaises(SystemExit) as cm:
             seguros.calculoEdad("16061997")
 
