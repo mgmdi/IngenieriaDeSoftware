@@ -93,8 +93,7 @@ def main():
             datos = line.split()
             edad = calculoEdad(datos[0])
             if(len(datos) == 5 and datos[3].lower() == "si"):
-
-                anosDestontados = int(numAnos) // 4
+                anosDestontados = int(datos[4]) // 4
                 if (anosDestontados > 5):
                     anosDestontados = 5
                 verificacion = verificacionDatos(edad,datos[1],datos[2], anosDestontados)
