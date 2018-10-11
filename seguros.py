@@ -5,9 +5,10 @@ def verificacionDatos(age,sex,weeksC,indicador):
     Descripcion: funcion que dada la edad, el sexo y las semanas cotizadas de 
     un solicitante se verifica si cumple con los requisitos necesarios para
     el seguro social de IVSS
-    Parametros: int age, string sex, int weeksC
+    Parametros: int age, string sex, int weeksC, int indicador 
+    (tiempo disminuido por trabajar en medios insalubres)
     Valor de retorno: "Si" si cumple con los requerimientos
-                    "No" en caso contrario
+                      "No" en caso contrario
     """
 
     if (not(str(age).isdigit()) or sex.lower() not in ["m","f","femenino","masculino"] or 
