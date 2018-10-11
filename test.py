@@ -25,6 +25,26 @@ class TestSeguro(unittest.TestCase):
         self.assertEqual(seguros.calculoEdad("30/12/1940"), 77)  
 
 
+    def test_verificacionDatosNF(self):         #casos no frontera
+        #CASO 1
+        self.assertEqual(seguros.verificacionDatos(56,"f",800,False), "SI")
+        #CASO 2
+        self.assertEqual(seguros.verificacionDatos(70,"m",50,False), "NO")
+        #CASO 3
+        self.assertEqual(seguros.verificacionDatos(80,"f",1000,False), "SI")
+        #CASO 4 
+        self.assertEqual(seguros.verificacionDatos(50,"f",800,False), "NO")
+        #CASO 5 
+        self.assertEqual(seguros.verificacionDatos(40,"m",500,False), "NO")
+        #CASO 6
+        self.assertEqual(seguros.verificacionDatos(63,"f",800,False), "SI")
+        #CASO 7 
+        self.assertEqual(seguros.verificacionDatos(78,"f",600,False), "NO")
+        #CASO 8 
+        self.assertEqual(seguros.verificacionDatos(66,"m",800,False), "SI")
+
+
+
 
 if __name__ == '__main__':
     unittest.main()  
