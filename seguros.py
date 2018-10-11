@@ -74,9 +74,13 @@ def main():
             exit(1)
         if(descontEdad.lower() == "si"):
             numAnos = input("Indique el numero de anos que trabajo: ")
-            print(verificacionDatos(edad,sexo,semCoti,int(numAnos) // 4))
+            verificacion = verificacionDatos(edad,sexo,semCoti,int(numAnos) // 4)
+            print(verificacion)
+            return verificacion
         else:
-            print(verificacionDatos(edad,sexo,semCoti,0))
+            verificacion =  verificacionDatos(edad,sexo,semCoti,0)
+            print(verificacion)
+            return verificacion
     elif(opcion == "2"):
         nombre = input("Ingrese nombre del archivo: ")
         file = open(nombre, "r")
@@ -84,9 +88,13 @@ def main():
             datos = line.split()
             edad = calculoEdad(datos[0])
             if(len(datos) == 5 and datos[3].lower() == "si"):
-                print(verificacionDatos(edad,datos[1],datos[2], (int(datos[4])//4)))
+                verificacion = verificacionDatos(edad,datos[1],datos[2], (int(datos[4])//4))
+                print(verificacion)
+                return verificacion
             else:
-                print(verificacionDatos(edad,datos[1],datos[2], 0))
+                verificacion = verificacionDatos(edad,datos[1],datos[2], 0)
+                print(verificacion)
+                return verificacion
     else:
         print("Error, debe ingresar 1 o 2")
         
