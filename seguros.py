@@ -65,11 +65,8 @@ def main():
             exit(1)
         if(descontEdad.lower() == "si"):
             numAnos = input("Indique el numero de anos que trabajo: ")
-            if(numAnos > 4):
-                edad = edad - (int(numAnos) // 4)
-                print("Se le ha descontado " + menosAnos + "de la edad considerada")
-                print(verificacionDatos(edad,sexo,weeksC,int(numAnos) // 4))
-                return
+            print(verificacionDatos(edad,sexo,weeksC,int(numAnos) // 4))
+            return
            
         print(verificacionDatos(edad,sexo,weeksC,0))
     elif(opcion == "2"):
