@@ -14,6 +14,8 @@ def verificacionDatos(age,sex,weeksC):
     not(str(weeksC).isdigit())):
         print("Error, existe alguna discrepancia entre la edad, el sexo o las semanas")
         exit(1) 
+
+    
     if(sex.lower() == "m" and int(age) >= 60 and int(weeksC)>=750):
         return("SI")
     elif(sex.lower() == "f" and int(age) >= 55 and int(weeksC)>=750):
@@ -35,7 +37,12 @@ def calculoEdad(fecha):
         exit(1)
 
     now = datetime.datetime.now()
-    edad = int(now.year) - int(fecha[2])
+    
+    if(int(fecha[1])<= now.month):
+        edad = int(now.year) - int(fecha[2])
+    else:
+        edad = int(now.year) - int(fecha[2]) - 1
+  
 
     return edad
 
