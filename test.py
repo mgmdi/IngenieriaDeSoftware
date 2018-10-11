@@ -68,7 +68,7 @@ class TestSeguro(unittest.TestCase):
         Los casos de malicia se definen como aquellos en donde los datos ingresados son invalidos y/o 
         arrojan excepciones/errores.
         Se considera caso invalido cuando el dato ingresado para indicar el sexo de la persona difiere de f/m.
-        Asimismo se considera caso invalido (ERROR) cuando el numero de horas cotizadas ingresadas difiere de un digito (positivo).
+        Asimismo se considera caso invalido  cuando el numero de horas cotizadas ingresadas o la edad difiere de un digito (positivo).
         '''  
         #CASO 1 
         with self.assertRaises(SystemExit) as cm:
@@ -100,7 +100,8 @@ class TestSeguro(unittest.TestCase):
         Funcion para verificacion del calculo de la edad con casos de malicia.
         Los casos de malicia se definen como aquellos en donde los datos ingresados son invalidos y/o 
         arrojan excepciones.
-        Se considera un caso invalido el formato para ingresar fecha de nacimiento como dd-mm-aaaa
+        Se considera un caso invalido el formato para ingresar fecha de nacimiento como a un formato diferente a xx/xx/xxxx
+        en donde x no es un numero.
         '''     
         #CASO 1
         with self.assertRaises(SystemExit) as cm:
@@ -122,6 +123,21 @@ class TestSeguro(unittest.TestCase):
             seguros.calculoEdad("05101877")
         self.assertEqual(cm.exception.code, 1)
 
+
+    def test_verificacionDatosE(self):
+        '''
+        Funcion para verificacion de Datos con casos con Esquina.
+        Los casos de esquina son definidos como aquellos en donde al restar o sumar un digito en los datos
+        de entrada , la entrada inmediatamente deja de ser valida 
+        Se considera un caso de esquina cuando en los datos ingresados el numero de horas cotizadas o la edad es igual a 0
+        ya que al restar un numero , el numero de horas seria negativo lo que causaria una entrada invalida.
+        '''
+
+        #CASO 1
+        self.assertEqual(seguros.verificacionDatos(60,"f",0,True), "NO")
+
+        #CASO 2
+        self.assertEqual(seguros.verificacionDatos(0,"f",800,True), "NO")
 
 if __name__ == '__main__':
     unittest.main()  
