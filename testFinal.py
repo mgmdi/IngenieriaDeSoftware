@@ -1,7 +1,8 @@
 import unittest
 import seguros
-
-
+'''
+Para ejecutar: python testFinal.py 
+'''
 class TestFinal(unittest.TestCase):
     '''
     Funcion que realiza la prueba de la ejecucion del programa completo.

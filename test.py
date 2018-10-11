@@ -1,6 +1,8 @@
 import unittest
 import seguros
-
+'''
+Para ejecutar: python test.py 
+'''
 
 class TestSeguro(unittest.TestCase):
 
